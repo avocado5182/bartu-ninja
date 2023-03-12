@@ -4,4 +4,4 @@ $('.main-carousel').flickity({
     wrapAround: true,
     imagesLoaded: true,
     percentPosition: false,
-  });
+});
