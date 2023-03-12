@@ -119,7 +119,7 @@ function draw() {
 	// title text
 	fill(255);
 	textFont(titleFont);
-	textSize(min(102, max(htmlEl.clientWidth / 18.8, 60), 102));
+	textSize(min(102, max(htmlEl.clientWidth / 18.8, 72), 120));
 	rectMode(CENTER);
 	textAlign(CENTER);
 	text("Bartu Tunctan", htmlEl.clientWidth * 1 / 2, htmlEl.clientHeight * 7 / 8, htmlEl.clientWidth, htmlEl.clientHeight);
