@@ -70,12 +70,31 @@ canvas {
 }
 
 main {
-    padding: 0 2em;
+    padding: 0 4em;
     margin-bottom: 2em;
 }
 
 #projects { 
     padding-top: 9vh;
+}
+
+#about {
+    margin: 0 auto;
+    max-width: 80ch;
+    line-height: 1.5em;
+}
+
+#about img {
+    float: right;
+    margin: 0 0 0 1.5em;
+    aspect-ratio: 1/1;
+    object-fit: cover;
+    width: 100%;
+    max-width: 40%;
+}
+
+#about p {
+    text-align: justify;
 }
 
 .main-carousel {
