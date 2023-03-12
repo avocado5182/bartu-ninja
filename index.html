@@ -28,11 +28,16 @@
 
     <title>Bartu</title>
 
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.4.slim.min.js" integrity="sha256-a2yjHM4jnF9f54xUQakjZGaqYs/V1CYvWpoqZzC2/Bw=" crossorigin="anonymous"></script>
+    
+    <!-- p5.js -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/swiffy-slider@1.6.0/dist/js/swiffy-slider.min.js" crossorigin="anonymous" defer></script>
-    <link href="https://cdn.jsdelivr.net/npm/swiffy-slider@1.6.0/dist/css/swiffy-slider.min.css" rel="stylesheet" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiffy-slider@1.6.0/dist/js/swiffy-slider-extensions.min.js">
     <script src="sketch.js"></script>
+    
+    <!-- Flickity (carousels) -->
+    <script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.min.css">
 
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700;1,800;1,900&family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap');
@@ -41,9 +46,9 @@
 </head>
 
 <body>
-    <nav class="nav">
+    <nav id="top" class="nav">
         <ul class="navul">
-            <li class="navli"><a href="#">Home</a></li>
+            <li class="navli"><a href="#top">Home</a></li>
             <li class="navli"><a href="#projects">Projects</a></li>
             <li class="navli"><a href="#about">About</a></li>
         </ul>
@@ -55,65 +60,69 @@
             100vw, 100vh
         -->
     </div>
-    <div id="projects">
-        <!-- Header -->
-        <h1>Projects</h1>
-
-        <!-- Carousel -->
-        <!-- <div class="swiffy-slider">
-            <ul class="slider-container">
-                <li><img src="https://source.unsplash.com/49b9l_29ceA/1600x900" style="max-width: 100%;height: auto;"></li>
-                <li><img src="https://source.unsplash.com/nKAglN6HBH8/1600x900" style="max-width: 100%;height: auto;"></li>
-                <li><img src="https://source.unsplash.com/E9ZwWcMGzj8/1600x900" style="max-width: 100%;height: auto;"></li>
-            </ul>
-        
-            <button type="button" class="slider-nav"></button>
-            <button type="button" class="slider-nav slider-nav-next"></button>
-        
-            <div class="slider-indicators">
-                <button class="active"></button>
-                <button></button>
-                <button></button>
+    <main>
+        <div id="projects">
+            <!-- Header -->
+            <h1>Projects</h1>
+            <!-- Carousel -->
+            <div class="main-carousel">
+                <img src="src/img/gwarun-featuregraphic.png">
+                <img src="https://camo.githubusercontent.com/d0e27f505fef14198d5b4c6075b15d6aa9c0fe8b0083e933a710c53288138e8d/68747470733a2f2f63646e2e646973636f72646170702e636f6d2f656d6f6a69732f3737393832383439353933323938313237392e6769663f763d31">
+                <img src="src/img/cover_2.png">
             </div>
-        </div> -->
-        <div class="swiffy-slider slider-nav-visible slider-indicators-sm slider-nav-mousedrag">
-            <ul class="slider-container">
-                <li><img src="https://source.unsplash.com/49b9l_29ceA/1600x900" style="max-width: 100%;height: auto;"></li>
-                <li><img src="https://source.unsplash.com/nKAglN6HBH8/1600x900" style="max-width: 100%;height: auto;"></li>
-                <li><img src="https://source.unsplash.com/E9ZwWcMGzj8/1600x900" style="max-width: 100%;height: auto;"></li>
-            </ul>
-        
-            <button type="button" class="slider-nav"></button>
-            <button type="button" class="slider-nav slider-nav-next"></button>
-        
-            <ul class="slider-indicators">
-                <li class="active"></li>
-                <li></li>
-                <li></li>
-            </ul>
-        </div>        
-    </div>
-    <div id="about">
-        <!-- Header -->
-        <h1>About me</h1>
+        </div>
+        <div id="about">
+            <!-- Header -->
+            <br><br><br><br>
+            <h1>About me</h1>
+    
+            <!-- Paragraph, inline photo -->
+            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quas molestiae consequuntur illo odio blanditiis,
+                ad in quisquam. Deserunt, magni consectetur! Fugit et blanditiis a quisquam! Ipsam magni enim reprehenderit
+                sequi nesciunt error dolores dicta pariatur harum nobis quo temporibus soluta facere id dolor, quisquam
+                aliquam commodi impedit illo culpa exercitationem aliquid beatae praesentium. Quisquam illo labore eaque
+                magnam itaque, nesciunt, eos explicabo ducimus distinctio officiis delectus corporis sint vitae aperiam
+                quia, aliquid possimus eveniet. Beatae nemo fuga ipsa distinctio, aut tempore officia. Ex voluptatum sint
+                est aut illum voluptas, magnam tenetur delectus quasi. Dolores illo ducimus, alias, unde asperiores
+                doloremque ea placeat inventore dicta, corporis dolorem. Unde veniam impedit neque autem dicta debitis ipsum
+                a possimus incidunt tempore, sed totam id ipsam aliquid ullam illo praesentium excepturi et sit deleniti
+                eligendi. Exercitationem ipsa necessitatibus deleniti ipsum sed consequatur minus aspernatur similique dolor
+                iste, dolore cum a veritatis rem? Necessitatibus dolor dignissimos quo numquam, consequuntur ipsam, illo
+                voluptas natus repellat iure in obcaecati quam accusamus aut suscipit, sapiente sunt? Officiis molestiae
+                laboriosam deserunt quaerat. Libero delectus dolorum amet, facilis incidunt nulla nostrum cupiditate aliquam
+                in reprehenderit consequatur eaque necessitatibus! Eos illo quae ea qui ab quis sed nisi in dolorem
+                explicabo.</p>
+        </div>
+    </main>
+    <footer>
+        <div class="row">
+            <div class="col">
+                <ul>
+                    <li><a href="#">Test link 1</a></li>
+                    <li><a href="#">Test link 2</a></li>
+                    <li><a href="#">Test link 3</a></li>
+                    <li><a href="#">Test link 4</a></li>
+                </ul>
+            </div>
+            <div class="col">
+                <ul>
+                    <li><a href="#">Test link 1</a></li>
+                    <li><a href="#">Test link 2</a></li>
+                    <li><a href="#">Test link 3</a></li>
+                    <li><a href="#">Test link 4</a></li>
+                </ul>
+            </div>
+            <div class="col">
+                <ul>
+                    <li><a href="#">Test link 1</a></li>
+                    <li><a href="#">Test link 2</a></li>
+                    <li><a href="#">Test link 3</a></li>
+                    <li><a href="#">Test link 4</a></li>
+                </ul>
+            </div>
+        </div>
+    </footer>
 
-        <!-- Paragraph, inline photo -->
-        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quas molestiae consequuntur illo odio blanditiis,
-            ad in quisquam. Deserunt, magni consectetur! Fugit et blanditiis a quisquam! Ipsam magni enim reprehenderit
-            sequi nesciunt error dolores dicta pariatur harum nobis quo temporibus soluta facere id dolor, quisquam
-            aliquam commodi impedit illo culpa exercitationem aliquid beatae praesentium. Quisquam illo labore eaque
-            magnam itaque, nesciunt, eos explicabo ducimus distinctio officiis delectus corporis sint vitae aperiam
-            quia, aliquid possimus eveniet. Beatae nemo fuga ipsa distinctio, aut tempore officia. Ex voluptatum sint
-            est aut illum voluptas, magnam tenetur delectus quasi. Dolores illo ducimus, alias, unde asperiores
-            doloremque ea placeat inventore dicta, corporis dolorem. Unde veniam impedit neque autem dicta debitis ipsum
-            a possimus incidunt tempore, sed totam id ipsam aliquid ullam illo praesentium excepturi et sit deleniti
-            eligendi. Exercitationem ipsa necessitatibus deleniti ipsum sed consequatur minus aspernatur similique dolor
-            iste, dolore cum a veritatis rem? Necessitatibus dolor dignissimos quo numquam, consequuntur ipsam, illo
-            voluptas natus repellat iure in obcaecati quam accusamus aut suscipit, sapiente sunt? Officiis molestiae
-            laboriosam deserunt quaerat. Libero delectus dolorum amet, facilis incidunt nulla nostrum cupiditate aliquam
-            in reprehenderit consequatur eaque necessitatibus! Eos illo quae ea qui ab quis sed nisi in dolorem
-            explicabo.</p>
-    </div>
-    <footer></footer>
+    <script src="index.js"></script>
 </body>
 </html>

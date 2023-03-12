@@ -72,26 +72,26 @@ function drawShapes() {
   // squares
   rectMode(CENTER);
   fill("lime")
-  drawSq(sq1Pos.x, sq1Pos.y, 20, sq1T);
+  drawSq(sq1Pos.x, sq1Pos.y, htmlEl.clientWidth / 36, sq1T);
   fill("purple")
-  drawSq(sq2Pos.x, sq2Pos.y, 20, sq2T);
+  drawSq(sq2Pos.x, sq2Pos.y, htmlEl.clientWidth / 36, sq2T);
   
   // triangles
   fill("hotpink")
-  drawTri(tri1Pos.x, tri1Pos.y, 40, tri1Rot);
+  drawTri(tri1Pos.x, tri1Pos.y, htmlEl.clientWidth / 24, tri1Rot);
   fill("orange")
-  drawTri(tri2Pos.x, tri2Pos.y, 40, tri2Rot);
+  drawTri(tri2Pos.x, tri2Pos.y, htmlEl.clientWidth / 24, tri2Rot);
   
   // // line
   // line(lineEnd1Pos.x, lineEnd1Pos.y, lineEnd2Pos.x, lineEnd2Pos.y);
   
   // points
   stroke("red")
-  strokeWeight(10 + (-abs(sq1T - 0.5) + 0.5) * 6)
+  strokeWeight(htmlEl.clientWidth / 96 + (-abs(sq1T - 0.5) + 0.5) * 6)
   point(pt1Pos);
   
   stroke("blue")
-  strokeWeight(10 + (-abs(sq2T - 0.5) + 0.5) * 4)
+  strokeWeight(htmlEl.clientWidth / 96 + (-abs(sq2T - 0.5) + 0.5) * 4)
   point(pt2Pos);
   
   strokeWeight(0)

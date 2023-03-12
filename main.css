@@ -1,11 +1,13 @@
 body, html {
+    min-height: 100%;
     height: 100%;
     margin: 0;
     padding: 0;
     font-family: 'Rubik', sans-serif;
     background: #141414;
     color: white;
-    overflow-x: hidden
+    overflow-x: hidden;
+    scroll-behavior: smooth;
 }
 
 canvas {
@@ -36,12 +38,10 @@ canvas {
     font-weight: 500;
     color: white;
     text-decoration: none;
-    height: 100%;
+    text-align: center;
+
+    line-height: 9vh;
     padding: 0 1em;
-    display: inline-block;
-    text-align: cente;
-    vertical-align: top;
-    line-height: 5;
 }
 
 .navli:hover {
@@ -52,6 +52,71 @@ canvas {
     color: #e0e0e0;
 }
 
-.slider-container {
+main {
+    padding: 0 2em;
+    margin-bottom: 2em;
+}
+
+.main-carousel {
     width: 100%;
+    height: calc( 100vh - 9vh - 8em );
+}
+
+.main-carousel .flickity-viewport {
+    /* width: 100%; */
+    /* height: calc( 100vh - 9vh - 8em ); */
+    height: calc( 100vh - 9vh - 8em );
+    /* height: 100%; */
+}
+
+.main-carousel .flickity-slider {
+    /* height: 100%; */
+    height: calc( 100vh - 9vh - 8em );
+}
+
+.flickity-slider img, .flickity-slider > div {
+    display: block;
+    /* height: 100vh; */
+    height: calc( 100vh - 9vh - 8em );
+    counter-increment: gallery-cell;
+}
+
+
+/* .main-carousel img {
+     object-fit: cover; 
+}  */
+
+
+footer {
+    width: 100%;
+    height: 12em;
+    margin-top: 2em;
+    background-color: #101010;
+    display: inline-flex;
+    list-style-type: none;
+    display: flex;
+    justify-content: center;   
+}
+
+footer .row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 50%;
+    gap: 2em;
+}
+
+footer li {
+    list-style-type: none;
+}
+
+footer li > a {
+    color: #dddddd;
+    text-decoration: none;
+    transition: all 0.15s;
+}
+
+footer li > a:hover {
+    text-decoration: underline;
 }
