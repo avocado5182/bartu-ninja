@@ -1,17 +1,30 @@
 let titleFont;
 
 let sq1Pos;
+let sq1InitPos;
 let sq1Rot;
 let sq1T = 0;
+let sq1xOff = 0;
+let sq1yOff = 0;
 
 let sq2Pos;
+let sq2InitPos;
 let sq2Rot;
 let sq2T = 1;
+let sq2xOff = 0;
+let sq2yOff = 0;
 
 let tri1Pos;
+let tri1InitPos;
 let tri1Rot = 0;
+let tri1xOff = 0;
+let tri1yOff = 0;
+
 let tri2Pos;
+let tri2InitPos;
 let tri2Rot = 360;
+let tri2xOff = 0;
+let tri2yOff = 0;
 
 let line1Pos;
 let line1Rot;
@@ -41,11 +54,11 @@ function setup() {
 }
 
 function initShapePositions() {
-	sq1Pos = createVector(htmlEl.clientWidth / 5, htmlEl.clientHeight / 5)
-	sq2Pos = createVector(htmlEl.clientWidth * 5 / 8, htmlEl.clientHeight * 3 / 10)
+	sq1Pos = sq1InitPos = createVector(htmlEl.clientWidth / 5, htmlEl.clientHeight / 5);
+	sq2Pos = sq2InitPos = createVector(htmlEl.clientWidth * 5 / 8, htmlEl.clientHeight * 3 / 10);
 
-	tri1Pos = createVector(htmlEl.clientWidth * 19 / 40, htmlEl.clientHeight * 29 / 40)
-	tri2Pos = createVector(htmlEl.clientWidth * 29 / 40, htmlEl.clientHeight * 3 / 20)
+	tri1Pos = tri1InitPos = createVector(htmlEl.clientWidth * 19 / 40, htmlEl.clientHeight * 29 / 40)
+	tri2Pos = tri2InitPos = createVector(htmlEl.clientWidth * 29 / 40, htmlEl.clientHeight * 3 / 20)
 
 	pt1Pos = createVector(htmlEl.clientWidth * 3 / 10, htmlEl.clientHeight * 13 / 20)
 	pt2Pos = createVector(htmlEl.clientWidth * 9 / 10, htmlEl.clientHeight * 1 / 2)
@@ -61,11 +74,6 @@ function drawSq(cx, cy, length, t = 0) {
 	let y3 = cy + length / 2;
 	let x4 = cx - length / 2;
 	let y4 = cy + length / 2;
-	
-	// rotate the square
-	// rotate the square around the center
-	// rotate the square around the center by t degrees
-	// rotate the square around the center by t degrees clockwise
 
 	t = radians(t);
 
@@ -169,13 +177,7 @@ function drawShapes() {
 	strokeWeight(0)
 }
 
-function draw() {
-	background(20);
-
-	drawGrid();
-
-	drawShapes();
-
+function updateShapeValues() {
 	tri1Rot += 0.0001
 	tri2Rot -= 0.00015
 
@@ -185,13 +187,51 @@ function draw() {
 	sq2T -= 0.8
 	if (sq2T < 0) sq2T = 360
 
-	// title text
-	fill(255);
-	textFont(titleFont);
-	textSize(Math.min(102, Math.max(htmlEl.clientWidth / 18.8, 72), 120));
-	rectMode(CENTER);
-	textAlign(CENTER);
-	// text("Bartu Tunctan", htmlEl.clientWidth / 2, htmlEl.clientHeight * 0.8125, htmlEl.clientWidth, htmlEl.clientHeight);
+	// lerp tri1pos around tri1InitPos randomly and slowly
+	tri1xOff += 0.02;
+	tri1yOff += 0.01;
+	let tri1x = lerp(tri1Pos.x, tri1InitPos.x + noise(tri1xOff) * 100 - 50, 0.01);
+	let tri1y = lerp(tri1Pos.y, tri1InitPos.y + noise(tri1yOff) * 100 - 50, 0.01);
+	tri1Pos = createVector(tri1x, tri1y);
+
+	// lerp tri2pos around tri2InitPos randomly and slowly
+	tri2xOff += 0.03;
+	tri2yOff += 0.02;
+	let tri2x = lerp(tri2Pos.x, tri2InitPos.x + noise(tri2xOff) * 100 - 50, 0.01);
+	let tri2y = lerp(tri2Pos.y, tri2InitPos.y + noise(tri2yOff) * 100 - 50, 0.01);
+	tri2Pos = createVector(tri2x, tri2y);
+
+	// lerp sq1pos around sq1InitPos randomly and slowly
+	sq1xOff += 0.04;
+	sq1yOff += 0.02;
+	let sq1x = lerp(sq1Pos.x, sq1InitPos.x + noise(sq1xOff) * 100 - 50, 0.01);
+	let sq1y = lerp(sq1Pos.y, sq1InitPos.y + noise(sq1yOff) * 100 - 50, 0.01);
+	sq1Pos = createVector(sq1x, sq1y);
+
+	// lerp sq2pos around sq2InitPos randomly and slowly
+	sq2xOff += 0.01;
+	sq2yOff += 0.01;
+	let sq2x = lerp(sq2Pos.x, sq2InitPos.x + noise(sq2xOff) * 100 - 50, 0.01);
+	let sq2y = lerp(sq2Pos.y, sq2InitPos.y + noise(sq2yOff) * 100 - 50, 0.01);
+	sq2Pos = createVector(sq2x, sq2y);
+}
+
+function draw() {
+	background(20);
+
+	drawGrid();
+
+	drawShapes();
+
+	updateShapeValues();
+
+	// // title text
+	// fill(255);
+	// textFont(titleFont);
+	// textSize(Math.min(102, Math.max(htmlEl.clientWidth / 18.8, 72), 120));
+	// rectMode(CENTER);
+	// textAlign(CENTER);
+	// // text("Bartu Tunctan", htmlEl.clientWidth / 2, htmlEl.clientHeight * 0.8125, htmlEl.clientWidth, htmlEl.clientHeight);
 }
 
 function windowResized() {
