@@ -76,7 +76,7 @@ function clamp(val, minVal, maxVal) {
 	return min(max(val, minVal), maxVal);
 }
 
-let cellSize = 100;
+let cellSize = 75;
 let gridPadding = 20;
 
 function drawGrid() {
@@ -154,7 +154,7 @@ function draw() {
 	textSize(min(102, max(htmlEl.clientWidth / 18.8, 72), 120));
 	rectMode(CENTER);
 	textAlign(CENTER);
-	text("Bartu Tunctan", htmlEl.clientWidth * 1 / 2, htmlEl.clientHeight * 7 / 8, htmlEl.clientWidth, htmlEl.clientHeight);
+	text("Bartu Tunctan", htmlEl.clientWidth / 2, htmlEl.clientHeight * 0.8125, htmlEl.clientWidth, htmlEl.clientHeight);
 }
 
 function windowResized() {
