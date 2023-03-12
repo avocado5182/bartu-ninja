@@ -72,6 +72,36 @@ function drawTri(cx, cy, r, rot = 0) {
 	);
 }
 
+function clamp(val, minVal, maxVal) {
+	return min(max(val, minVal), maxVal);
+}
+
+let cellSize = 100;
+let gridPadding = 20;
+
+function drawGrid() {
+	// stroke(255, 255, 255, 50);
+
+	strokeWeight(4);
+
+	// make a grid of points with a nested for loop
+	for (let x = gridPadding; x < width - gridPadding; x += cellSize) {
+		for (let y = gridPadding; y < height - gridPadding; y += cellSize) {
+			let centerOff = (cellSize - gridPadding) / 3;
+			// make the stroke color change based on the distance from the mouse to the point to draw
+			// if the mouse is close to the point, the stroke will be lighter (closer to white)
+			// if the mouse is far from the point, the stroke will be darker (closer to light gray)
+			// make the stroke slightly darker as y increases
+			stroke(clamp(clamp(255 - dist(mouseX, mouseY, x, y), 80, 255) - y / 18, 20, 255));
+
+			// stroke(clamp(255 - dist(mouseX, mouseY, x, y), 80, 255)); 
+			
+			// draw a point at each location
+			point(x + centerOff, y);
+		}
+	}
+}
+
 function drawShapes() {
 	strokeWeight(0)
 	// squares
@@ -104,6 +134,8 @@ function drawShapes() {
 
 function draw() {
 	background(20);
+
+	drawGrid();
 
 	drawShapes();
 
