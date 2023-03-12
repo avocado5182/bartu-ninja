@@ -1,4 +1,5 @@
 let titleFont;
+
 let sq1Pos;
 let sq1Rot;
 let sq1T = 0;
@@ -53,10 +54,10 @@ function initShapePositions() {
 // t is 0...1
 function drawSq(cx, cy, r, t = 0) {
 	quad(
-		map(t, 0, 1, cx - r / 2, cx + r / 2), cy + r * (abs(t - 0.5) - 1), // top left
-		cx + r * (-abs(t - 0.5) + 1), map(t, 0, 1, cy - r / 2, cy + r / 2), // top right
-		map(t, 0, 1, cx + r / 2, cx - r / 2), cy + r * -(abs(t - 0.5) - 1), // bottom right
-		cx + r * (abs(t - 0.5) - 1), map(t, 0, 1, cy + r / 2, cy - r / 2) // bottom left
+		map(t, 0, 1, cx - r / 2, cx + r / 2), cy + r * (Math.abs(t - 0.5) - 1), // top left
+		cx + r * (-Math.abs(t - 0.5) + 1), map(t, 0, 1, cy - r / 2, cy + r / 2), // top right
+		map(t, 0, 1, cx + r / 2, cx - r / 2), cy + r * -(Math.abs(t - 0.5) - 1), // bottom right
+		cx + r * (Math.abs(t - 0.5) - 1), map(t, 0, 1, cy + r / 2, cy - r / 2) // bottom left
 	);
 }
 
@@ -66,14 +67,20 @@ function drawTri(cx, cy, r, rot = 0) {
 
 	r /= 2;
 	triangle(
-		cx + (r * cos(rot)), cy + (r * sin(rot)),
-		cx + (r * cos(rot + (PI * 2 / 3))), cy + (r * sin(rot + (PI * 2 / 3))),
-		cx + (r * cos(rot - (PI * 2 / 3))), cy + (r * sin(rot - (PI * 2 / 3)))
+		cx + (r * Math.cos(rot)), cy + (r * Math.sin(rot)),
+		cx + (r * Math.cos(rot + (PI * 2 / 3))), cy + (r * Math.sin(rot + (PI * 2 / 3))),
+		cx + (r * Math.cos(rot - (PI * 2 / 3))), cy + (r * Math.sin(rot - (PI * 2 / 3)))
 	);
 }
 
 function clamp(val, minVal, maxVal) {
-	return min(max(val, minVal), maxVal);
+	return Math.min(Math.max(val, minVal), maxVal);
+}
+
+function distSquared(x1, y1, x2, y2) {
+    let dx = x2 - x1;
+    let dy = y2 - y1;
+    return dx * dx + dy * dy;
 }
 
 let cellSize = 75;
@@ -92,7 +99,7 @@ function drawGrid() {
 			// if the mouse is close to the point, the stroke will be lighter (closer to white)
 			// if the mouse is far from the point, the stroke will be darker (closer to light gray)
 			// make the stroke slightly darker as y increases
-			stroke(clamp(clamp(255 - dist(mouseX, mouseY, x, y), 80, 255) - y / 18, 20, 255));
+			stroke(clamp(clamp(255 - distSquared(mouseX, mouseY, x, y) / 75, 80, 255) - y / 18, 20, 255));
 
 			// stroke(clamp(255 - dist(mouseX, mouseY, x, y), 80, 255)); 
 			
@@ -122,11 +129,11 @@ function drawShapes() {
 
 	// points
 	stroke("red")
-	strokeWeight(htmlEl.clientWidth / 96 + (-abs(sq1T - 0.5) + 0.5) * 6)
+	strokeWeight(htmlEl.clientWidth / 96 + (-Math.abs(sq1T - 0.5) + 0.5) * 6)
 	point(pt1Pos);
 
 	stroke("blue")
-	strokeWeight(htmlEl.clientWidth / 96 + (-abs(sq2T - 0.5) + 0.5) * 4)
+	strokeWeight(htmlEl.clientWidth / 96 + (-Math.abs(sq2T - 0.5) + 0.5) * 4)
 	point(pt2Pos);
 
 	strokeWeight(0)
@@ -151,7 +158,7 @@ function draw() {
 	// title text
 	fill(255);
 	textFont(titleFont);
-	textSize(min(102, max(htmlEl.clientWidth / 18.8, 72), 120));
+	textSize(Math.min(102, Math.max(htmlEl.clientWidth / 18.8, 72), 120));
 	rectMode(CENTER);
 	textAlign(CENTER);
 	text("Bartu Tunctan", htmlEl.clientWidth / 2, htmlEl.clientHeight * 0.8125, htmlEl.clientWidth, htmlEl.clientHeight);
