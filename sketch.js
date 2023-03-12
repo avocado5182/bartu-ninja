@@ -148,30 +148,33 @@ function drawGrid() {
 function drawShapes() {
 	strokeWeight(0)
 	// squares
-	let squareDivisor = 24;
+	let responsiveSize = (htmlEl.clientWidth + htmlEl.clientHeight * 5) / 6;
+	let squareDivisor = 12;
+	let triDivisor = 12;
+	let ptDivisor = 48;
 
 	rectMode(CENTER);
 	fill("lime")
-	drawSq(sq1Pos.x, sq1Pos.y, htmlEl.clientWidth / squareDivisor, sq1T);
+	drawSq(sq1Pos.x, sq1Pos.y, responsiveSize / squareDivisor, sq1T);
 	fill("purple")
-	drawSq(sq2Pos.x, sq2Pos.y, htmlEl.clientWidth / squareDivisor, sq2T);
+	drawSq(sq2Pos.x, sq2Pos.y, responsiveSize / squareDivisor, sq2T);
 
 	// triangles
 	fill("hotpink")
-	drawTri(tri1Pos.x, tri1Pos.y, htmlEl.clientWidth / 24, tri1Rot);
+	drawTri(tri1Pos.x, tri1Pos.y, responsiveSize / triDivisor, tri1Rot);
 	fill("orange")
-	drawTri(tri2Pos.x, tri2Pos.y, htmlEl.clientWidth / 24, tri2Rot);
+	drawTri(tri2Pos.x, tri2Pos.y, responsiveSize / triDivisor, tri2Rot);
 
 	// // line
 	// line(lineEnd1Pos.x, lineEnd1Pos.y, lineEnd2Pos.x, lineEnd2Pos.y);
 
 	// points
 	stroke("red")
-	strokeWeight(htmlEl.clientWidth / 96 + (-Math.abs(sq1T / 360 - 0.5) + 0.5) * 6)
+	strokeWeight(responsiveSize / ptDivisor + (-Math.abs(sq1T / 360 - 0.5) + 0.5) * 6)
 	point(pt1Pos);
 
 	stroke("blue")
-	strokeWeight(htmlEl.clientWidth / 96 + (-Math.abs(sq2T / 360 - 0.5) + 0.5) * 4)
+	strokeWeight(responsiveSize / ptDivisor + (-Math.abs(sq2T / 360 - 0.5) + 0.5) * 4)
 	point(pt2Pos);
 
 	strokeWeight(0)
