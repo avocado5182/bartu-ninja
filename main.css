@@ -68,7 +68,7 @@ add dark shadow and
 scale it up by 5% */
 .hero > .heroBtn:hover, .hero > .heroBtn:focus {
     background-color: #6dbb8c;
-    box-shadow: 0 0 0.5em rgba(255, 255, 255, 0.5);
+    box-shadow: 0 0 0.5em #7ECA9C;
     transform: translate(-50%, -50%) scale(1.05);
 }
 
