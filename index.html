@@ -1,66 +1,119 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <meta name="title" content="Bartu ninja">
-    <meta name="description" content="The rock is a great rock. Mmm yes yummy great rock. Bartu.ninja thinks that everyone should know about the Rock.">
+    <meta name="description"
+        content="The rock is a great rock. Mmm yes yummy great rock. Bartu.ninja thinks that everyone should know about the Rock.">
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://bartu.ninja/">
     <meta property="og:title" content="Bartu ninja">
-    <meta property="og:description" content="The rock is a great rock. Mmm yes yummy great rock. Bartu.ninja thinks that everyone should know about the Rock.">
+    <meta property="og:description"
+        content="The rock is a great rock. Mmm yes yummy great rock. Bartu.ninja thinks that everyone should know about the Rock.">
     <meta property="og:image" content="https://bartu.ninja/src/img/rock.jpg">
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:url" content="https://bartu.ninja/">
     <meta property="twitter:title" content="Bartu ninja">
-    <meta property="twitter:description" content="The rock is a great rock. Mmm yes yummy great rock. Bartu.ninja thinks that everyone should know about the Rock.">
+    <meta property="twitter:description"
+        content="The rock is a great rock. Mmm yes yummy great rock. Bartu.ninja thinks that everyone should know about the Rock.">
     <meta property="twitter:image" content="https://bartu.ninja/src/img/rock.jpg">
 
     <title>Bartu</title>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiffy-slider@1.6.0/dist/js/swiffy-slider.min.js" crossorigin="anonymous" defer></script>
+    <link href="https://cdn.jsdelivr.net/npm/swiffy-slider@1.6.0/dist/css/swiffy-slider.min.css" rel="stylesheet" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiffy-slider@1.6.0/dist/js/swiffy-slider-extensions.min.js">
+    <script src="sketch.js"></script>
+
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700;1,800;1,900&family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap');
     </style>
     <link rel="stylesheet" href="main.css">
 </head>
+
 <body>
-    <div class="maxvp hero">
-        <div class="top">
-            <div class="header">
-                <ul>
-                    <li>
-                        <a href="#">Home</a>
-                    </li>
-                    <li>
-                        <a href="#about">About</a>
-                    </li>
-                    <li>
-                        <a href="#projects">Projects</a>
-                    </li>
-                </ul>
-            </div>
-            <h1>Bartu</h1>
-        </div>
-        <div class="bottom">
-            <div class="heroitem">
-                <img src="src/img/pic1.jpg" alt="Image of bartu" srcset="">
-            </div>
-            <div class="heroitem">
-                <img id="topimg" src="src/img/pic2.jpg" alt="" srcset="">
-            </div>
-            <div class="heroitem">
-                <img src="src/img/pic3.jpg" alt="Image of bartu" srcset="">
-            </div>
-        </div>
+    <nav class="nav">
+        <ul class="navul">
+            <li class="navli"><a href="#">Home</a></li>
+            <li class="navli"><a href="#projects">Projects</a></li>
+            <li class="navli"><a href="#about">About</a></li>
+        </ul>
+    </nav>
+    <div class="hero">
+        <!-- 
+            background with moving shapes with my name as text in the front
+            maybe the moving shapes can react to mouse?
+            100vw, 100vh
+        -->
     </div>
+    <div id="projects">
+        <!-- Header -->
+        <h1>Projects</h1>
 
-    <div class="maxvp info1"></div>
+        <!-- Carousel -->
+        <!-- <div class="swiffy-slider">
+            <ul class="slider-container">
+                <li><img src="https://source.unsplash.com/49b9l_29ceA/1600x900" style="max-width: 100%;height: auto;"></li>
+                <li><img src="https://source.unsplash.com/nKAglN6HBH8/1600x900" style="max-width: 100%;height: auto;"></li>
+                <li><img src="https://source.unsplash.com/E9ZwWcMGzj8/1600x900" style="max-width: 100%;height: auto;"></li>
+            </ul>
+        
+            <button type="button" class="slider-nav"></button>
+            <button type="button" class="slider-nav slider-nav-next"></button>
+        
+            <div class="slider-indicators">
+                <button class="active"></button>
+                <button></button>
+                <button></button>
+            </div>
+        </div> -->
+        <div class="swiffy-slider slider-nav-visible slider-indicators-sm slider-nav-mousedrag">
+            <ul class="slider-container">
+                <li><img src="https://source.unsplash.com/49b9l_29ceA/1600x900" style="max-width: 100%;height: auto;"></li>
+                <li><img src="https://source.unsplash.com/nKAglN6HBH8/1600x900" style="max-width: 100%;height: auto;"></li>
+                <li><img src="https://source.unsplash.com/E9ZwWcMGzj8/1600x900" style="max-width: 100%;height: auto;"></li>
+            </ul>
+        
+            <button type="button" class="slider-nav"></button>
+            <button type="button" class="slider-nav slider-nav-next"></button>
+        
+            <ul class="slider-indicators">
+                <li class="active"></li>
+                <li></li>
+                <li></li>
+            </ul>
+        </div>        
+    </div>
+    <div id="about">
+        <!-- Header -->
+        <h1>About me</h1>
 
-    <div class="footer"></div>
+        <!-- Paragraph, inline photo -->
+        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quas molestiae consequuntur illo odio blanditiis,
+            ad in quisquam. Deserunt, magni consectetur! Fugit et blanditiis a quisquam! Ipsam magni enim reprehenderit
+            sequi nesciunt error dolores dicta pariatur harum nobis quo temporibus soluta facere id dolor, quisquam
+            aliquam commodi impedit illo culpa exercitationem aliquid beatae praesentium. Quisquam illo labore eaque
+            magnam itaque, nesciunt, eos explicabo ducimus distinctio officiis delectus corporis sint vitae aperiam
+            quia, aliquid possimus eveniet. Beatae nemo fuga ipsa distinctio, aut tempore officia. Ex voluptatum sint
+            est aut illum voluptas, magnam tenetur delectus quasi. Dolores illo ducimus, alias, unde asperiores
+            doloremque ea placeat inventore dicta, corporis dolorem. Unde veniam impedit neque autem dicta debitis ipsum
+            a possimus incidunt tempore, sed totam id ipsam aliquid ullam illo praesentium excepturi et sit deleniti
+            eligendi. Exercitationem ipsa necessitatibus deleniti ipsum sed consequatur minus aspernatur similique dolor
+            iste, dolore cum a veritatis rem? Necessitatibus dolor dignissimos quo numquam, consequuntur ipsam, illo
+            voluptas natus repellat iure in obcaecati quam accusamus aut suscipit, sapiente sunt? Officiis molestiae
+            laboriosam deserunt quaerat. Libero delectus dolorum amet, facilis incidunt nulla nostrum cupiditate aliquam
+            in reprehenderit consequatur eaque necessitatibus! Eos illo quae ea qui ab quis sed nisi in dolorem
+            explicabo.</p>
+    </div>
+    <footer></footer>
 </body>
 </html>
