@@ -51,13 +51,41 @@ function initShapePositions() {
 	pt2Pos = createVector(htmlEl.clientWidth * 9 / 10, htmlEl.clientHeight * 1 / 2)
 }
 
-// t is 0...1
-function drawSq(cx, cy, r, t = 0) {
+// t is 0...360
+function drawSq(cx, cy, length, t = 0) {
+	let x1 = cx - length / 2;
+	let y1 = cy - length / 2;
+	let x2 = cx + length / 2;
+	let y2 = cy - length / 2;
+	let x3 = cx + length / 2;
+	let y3 = cy + length / 2;
+	let x4 = cx - length / 2;
+	let y4 = cy + length / 2;
+	
+	// rotate the square
+	// rotate the square around the center
+	// rotate the square around the center by t degrees
+	// rotate the square around the center by t degrees clockwise
+
+	t = radians(t);
+
+	let x1r = cx + (x1 - cx) * Math.cos(t) - (y1 - cy) * Math.sin(t);
+	let y1r = cy + (x1 - cx) * Math.sin(t) + (y1 - cy) * Math.cos(t);
+	let x2r = cx + (x2 - cx) * Math.cos(t) - (y2 - cy) * Math.sin(t);
+	let y2r = cy + (x2 - cx) * Math.sin(t) + (y2 - cy) * Math.cos(t);
+	let x3r = cx + (x3 - cx) * Math.cos(t) - (y3 - cy) * Math.sin(t);
+	let y3r = cy + (x3 - cx) * Math.sin(t) + (y3 - cy) * Math.cos(t);
+	let x4r = cx + (x4 - cx) * Math.cos(t) - (y4 - cy) * Math.sin(t);
+	let y4r = cy + (x4 - cx) * Math.sin(t) + (y4 - cy) * Math.cos(t);
+	
+
+	// make a square using the quad function
+	// use the new rotated x & y values
 	quad(
-		map(t, 0, 1, cx - r / 2, cx + r / 2), cy + r * (Math.abs(t - 0.5) - 1), // top left
-		cx + r * (-Math.abs(t - 0.5) + 1), map(t, 0, 1, cy - r / 2, cy + r / 2), // top right
-		map(t, 0, 1, cx + r / 2, cx - r / 2), cy + r * -(Math.abs(t - 0.5) - 1), // bottom right
-		cx + r * (Math.abs(t - 0.5) - 1), map(t, 0, 1, cy + r / 2, cy - r / 2) // bottom left
+		x1r, y1r,
+		x2r, y2r,
+		x3r, y3r,
+		x4r, y4r
 	);
 }
 
@@ -112,11 +140,13 @@ function drawGrid() {
 function drawShapes() {
 	strokeWeight(0)
 	// squares
+	let squareDivisor = 24;
+
 	rectMode(CENTER);
 	fill("lime")
-	drawSq(sq1Pos.x, sq1Pos.y, htmlEl.clientWidth / 36, sq1T);
+	drawSq(sq1Pos.x, sq1Pos.y, htmlEl.clientWidth / squareDivisor, sq1T);
 	fill("purple")
-	drawSq(sq2Pos.x, sq2Pos.y, htmlEl.clientWidth / 36, sq2T);
+	drawSq(sq2Pos.x, sq2Pos.y, htmlEl.clientWidth / squareDivisor, sq2T);
 
 	// triangles
 	fill("hotpink")
@@ -129,11 +159,11 @@ function drawShapes() {
 
 	// points
 	stroke("red")
-	strokeWeight(htmlEl.clientWidth / 96 + (-Math.abs(sq1T - 0.5) + 0.5) * 6)
+	strokeWeight(htmlEl.clientWidth / 96 + (-Math.abs(sq1T / 360 - 0.5) + 0.5) * 6)
 	point(pt1Pos);
 
 	stroke("blue")
-	strokeWeight(htmlEl.clientWidth / 96 + (-Math.abs(sq2T - 0.5) + 0.5) * 4)
+	strokeWeight(htmlEl.clientWidth / 96 + (-Math.abs(sq2T / 360 - 0.5) + 0.5) * 4)
 	point(pt2Pos);
 
 	strokeWeight(0)
@@ -149,11 +179,11 @@ function draw() {
 	tri1Rot += 0.0001
 	tri2Rot -= 0.00015
 
-	sq1T += 0.01
-	sq1T %= 1
+	sq1T += 1
+	sq1T %= 360
 
-	sq2T -= 0.008
-	if (sq2T < 0) sq2T = 1
+	sq2T -= 0.8
+	if (sq2T < 0) sq2T = 360
 
 	// title text
 	fill(255);
@@ -161,7 +191,7 @@ function draw() {
 	textSize(Math.min(102, Math.max(htmlEl.clientWidth / 18.8, 72), 120));
 	rectMode(CENTER);
 	textAlign(CENTER);
-	text("Bartu Tunctan", htmlEl.clientWidth / 2, htmlEl.clientHeight * 0.8125, htmlEl.clientWidth, htmlEl.clientHeight);
+	// text("Bartu Tunctan", htmlEl.clientWidth / 2, htmlEl.clientHeight * 0.8125, htmlEl.clientWidth, htmlEl.clientHeight);
 }
 
 function windowResized() {
