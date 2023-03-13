@@ -167,20 +167,55 @@ main {
     height: calc( 100vh - 9vh - 8em );
 }
 
-.flickity-slider img, .flickity-slider > div {
-    display: block;
-    /* height: 100vh; */
-    height: calc( 100vh - 9vh - 8em );
-    counter-increment: gallery-cell;
+.carousel-cell {
+    display: flex;
+    flex-direction: column;
+    width: 40%;
+    margin: 0 2em;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+    background-color: #eee;
+    color: #1e1e1e;
+    border-bottom-left-radius: 1em;
+    border-bottom-right-radius: 1em;
+}
+
+.carousel-cell > img {
+    height: 50%;
+    width: 100%;
+    object-fit: contain;
+    background-color: rgba(0, 0, 0, 0.9);
+}
+
+.carousel-cell > .carousel-cell-text {
+    height: 50%;
+    width: 80ch;
+    margin: 0 auto;
+    max-width: calc(100% - 4em);
+    padding: 0 2em 0 2em;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+.carousel-cell-text h1 {
+    font-size: 2rem;
+    font-weight: 500;
+}
+
+.carousel-cell-text > p {
+    font-size: 1.2rem;
+    font-weight: 300;
+    margin: 0;
+    margin-bottom: 1em;
+    padding: 0;
+    overflow-y: auto;
 }
 
 #about {
     padding-top: 9vh;
 }
-
-/* .main-carousel img {
-     object-fit: cover; 
-}  */
 
 
 footer {
@@ -194,44 +229,14 @@ footer {
     justify-content: center;   
 }
 
-/*
-footer .row {
-    display: flex;
-    flex-wrap: wrap;
-    /* justify-content: space-between;
-    align-items: center; 
-    height: 100%;
-    /* max-width: fit-content;
-    min-width: min-content; 
-    --sign-flag: calc(40rem - 100%);
-    --multiplier: 999;
-    gap: 2em;
+@media screen and (max-width: 1000px) {
+    .carousel-cell {
+        width: 100%;
+    }
 }
 
-footer > .col {
-    /* flex: 0 0 20%; 
-    min-width: calc(100% / 4);
-    max-width: 100%;
-    flex-grow: 1;
-    flex-basis: calc(var(--sign-flag) * var(--multiplier));
+@media screen and (max-width: 1400px) {
+    .carousel-cell {
+        width: 80%;
+    }
 }
-
-footer ul {
-    padding: 0;
-}
-
-footer li {
-    list-style-type: none;
-}
-
-footer li > a {
-    color: #dddddd;
-    text-decoration: none;
-    transition: all 0.15s;
-}
-
-footer li > a:hover {
-    text-decoration: underline;
-}
-
-*/
