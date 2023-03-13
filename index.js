@@ -4,7 +4,7 @@ let $carousel = $('.main-carousel').flickity({
   wrapAround: true,
   imagesLoaded: true,
   percentPosition: false,
-  dragThreshold: 20,
+  dragThreshold: 50,
   selectedAttraction: 0.01,
   friction: 0.15,
 });
