@@ -11,12 +11,14 @@ body, html {
 }
 
 a {
+    text-decoration: none;
     color: #E54F6D;
     transition: color 0.15s;
 }
 
 a:hover, a:focus {
     color: hsl(348, 74%, 42%);
+    text-decoration: underline;
 }
 
 a:visited {
@@ -25,6 +27,7 @@ a:visited {
 
 a:visited:hover, a:visited:focus {
     color:hsl(206, 83%, 40%);
+    text-decoration: underline;
 }
 
 a
@@ -139,6 +142,11 @@ canvas {
 
 .navli:hover > a {
     color: #e0e0e0;
+    text-decoration: underline;
+}
+
+.navli > a:focus {
+    text-decoration: underline;
 }
 
 main {
