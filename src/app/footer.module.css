@@ -1,0 +1,12 @@
+/* falls below content */
+.footer {
+    width: 100%;
+    height: 12em;
+    margin-top: 8em;
+    background-color: #101010;
+    display: inline-flex;
+    list-style-type: none;
+    /* display: flex; */
+    justify-content: center;
+    content: "";
+  }
