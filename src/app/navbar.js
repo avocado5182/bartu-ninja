@@ -1,5 +1,3 @@
-'use client';
-
 import Link from 'next/link';
 import styles from './navbar.module.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -15,9 +13,9 @@ import { faUpRightFromSquare } from '@fortawesome/free-solid-svg-icons';
 </ul> */}
 
 let links = [
-    { href: '#top', label: 'Home', newTab: false, icon: null },
-    { href: '#projects', label: 'Projects', newTab: false, icon: null },
-    { href: '#about', label: 'About me', newTab: false, icon: null },
+    { href: '/#top', label: 'Home', newTab: false, icon: null },
+    { href: '/#projects', label: 'Projects', newTab: false, icon: null },
+    { href: '/#about', label: 'About me', newTab: false, icon: null },
     { href: '/notes', label: 'Notes', newTab: false, icon: null },
     { href: 'https://github.com/avocado5182', label: 'My GitHub', newTab: true, icon: faUpRightFromSquare },
 ];

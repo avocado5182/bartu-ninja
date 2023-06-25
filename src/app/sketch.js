@@ -12,10 +12,6 @@ const Sketch = dynamic(() => import('react-p5').then((mod) => mod.default), {
 export default function HeroSketchWrapper(props) {
     let [width, height] = useDeviceSize();
 
-    function useUpdateDeviceSize() {
-        [width, height] = useDeviceSize();
-    }
-
     let sq1Pos;
     let sq1InitPos;
     let sq1Rot;
@@ -48,6 +44,14 @@ export default function HeroSketchWrapper(props) {
     const setup = (p5, canvasParentRef) => {
         p5.createCanvas(width, height).parent(canvasParentRef);
         console.log("loaded");
+        console.log(canvasParentRef);
+        let fadeIn = canvasParentRef;
+        fadeIn.style.animation = "1s ease-in-out 0.5s 1 normal forwards running fadeIn";
+        console.log(fadeIn.style);
+        // fadeIn.one("animationend webkitAnimationEnd oAnimationEnd MSAnimationEnd", function () {
+        //     // fadeIn.remove();
+        //     console.log("hi faded in");
+        // });
 
         initShapePositions(p5);
     }

@@ -25,9 +25,11 @@ export default function HomeHeroWrapper() {
 
           <HeroSketchWrapper></HeroSketchWrapper>
 
-          <h1 className={`${styles.heroTitle} ${josefin_sans.className}`}>Bartu</h1>
-          <Link href="#projects" className={`${styles.heroBtn} ${styles.heroBtnFirst}`}>Go to my projects</Link>
-          <Link href="/notes" className={`${styles.heroBtn} ${styles.heroBtnSecond}`}>See my class notes</Link>
+          <div className={styles.heroFg}>
+            <h1 className={`${styles.heroTitle} ${josefin_sans.className}`}>Bartu</h1>
+            <Link href="#projects" tabIndex={0} className={styles.heroBtn}>Go to my projects</Link>
+            <Link href="/notes" tabIndex={1} className={styles.heroBtn}>See my class notes</Link>
+          </div>
         </div>
     )
 }
